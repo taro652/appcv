@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <script type="module" src="scripts/scrips.js" defer></script>
     <link rel="shortcut icon" href="css/images/favicon.svg" type="image/x-icon">
     <title>appcv</title>
 </head>
@@ -17,28 +18,21 @@
     </nav>
 
     <div class="main">
-        <div class="drag drop">
-            <h2>Arrastre o seleccione su cv desde su dispositivo</h2>
-            <div class="container">
-                <div class="input">
-                    <div class="zone">
-                        <label id="drop-zone">
-                            <input type="file" id="file-input" accept="image/*" />
-                        </label>
-
-                    </div>
+        <div class="main-block left-content">
+            <h2>Arrastre o seleccione su cv</h2>
+            <div class="input">
+                    <label id="upload">
+                        <input type="file" id="file-input" accept="application/pdf"/>
+                        <div class="preview"></div>
+                    </label>
                     <div class="action-btn">
-                        <button id="clear-btn">Clear</button>
-                        <button id="send-btn">Send</button>
-                    </div>
-                </div>
-                <div class="drop-right">
-                    <div id="preview"></div>
-                </div>
+                        <button id="clear-btn" disabled>Clear</button>
+                        <button id="send-btn" disabled>Send</button>
+                    </div>                
             </div>
         </div>
-        <div class="drag col-right">
-            <h2>Aquí aparecerá la inforación procesada por IA</h2>
+        <div class="main-block right-content">
+            <h2>Información procesada por IA</h2>
             <div class="info">
                 nada por ahora...
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aperiam, deserunt quo nemo consectetur porro aliquid reprehenderit tenetur repudiandae veniam placeat numquam, sit nihil, voluptas similique minus nam a ullam.

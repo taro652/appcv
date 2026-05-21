@@ -1,9 +1,4 @@
 :root {
-    /*--color-primary: hsl(206, 100%, 24%);
-    --color-background: hsl(206, 100%,40%);
-    --color-secondary: hsl(196, 50%, 10%);
-    --color-tertiary: hsl(256, 80%, 20%);
-    --color-accent: hsl(136, 80%, 20%);*/
     --blue-dark: #005c7e;
     --blue: #227c9d;
     --blue-soft: #2f97b9;
@@ -109,19 +104,19 @@ nav ul li:nth-child(3):hover{
     }
 }
 
-/* drag */
-.drag {
+/* main-block */
+.main-block {
     padding: 0.5rem;
     background-color: var(--main-color);
     border-radius: 8px;
-    text-align: center;
-    align-content: center;
     display: grid;
-    grid-template-rows: 0.25fr 8fr;
-    gap: 1rem;
-    overflow: scroll;
+    grid-template-rows: 0.5fr 8fr;
+    gap: 0.25rem;
+    overflow: hidden;
     border:1px var(--border-color) solid;
 }
+
+/* left-content */
 
 h2 {
     font-size: 1.2rem;
@@ -131,47 +126,43 @@ h2 {
     min-height: fit-content;
 }
 
-/* drop */
-.drop .container {
+.input {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 6fr 1fr;
+    gap: 1rem;
+}
+@media screen and (max-width: 760px) {
+    .input {
+        grid-template-rows:3fr 1fr;
+    }
 }
 
-.drop .input, .drop-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-}
-
-.zone {
-    flex: 1;
-    margin: 1rem;
-    border: 2px var(--red) solid;
-    border-style: dashed;
-    
-}
-
-.zone:hover {
-    animation-name: myAnimation;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-}
-@keyframes myAnimation {
-  from {border-color: var(--red);}
-  to {border-color:  var(--yellow);}
-}
-
-input {
-    height: 100%;
+#upload {
+    position: relative;
+    display: block;
     width: 100%;
-    align-content: center;
-    background-color: var(--blue-dark);
-    color: white;
+    height: 100%;
+    background-image: url("images/cv-placeholder.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10vh;
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    margin: 1rem;
+    border: 1px var(--border-color) solid;
 }
-
-input:hover {
-    background-color: var(--blue);
+#upload:hover {
+    background-color: var(--border-color);
+    border-radius: 8px;
+    border-color: var(--blue);
+}
+.preview, embed {
+    width: 100%;
+    height: 100%;
+}
+input {
+    display: none;
 }
 
 .action-btn {
@@ -202,26 +193,6 @@ input:hover {
     box-shadow: 0 4px 20px var(--red-strong);
 }
 
-/*drop-right*/
-#preview {
-    margin: 1rem;
-    align-items: center;
-    width: 90%;
-    min-height: 90%;
-    background-image: url("images/cv-placeholder.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20dvw;
-    border: var(--blue) 1px solid;
-}
-
-#preview img {
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-    overflow: hidden;
-}
-
 /*info*/
 .info {
     background-color: var(--btn-color);
@@ -229,6 +200,10 @@ input:hover {
     overflow: scroll;
     max-height: 74vh;
     border-radius: 24px;
+    padding: 0.5rem;
+}
+.info:hover {
+    border-color: var(--blue);
 }
 
 /* Footer */
@@ -239,5 +214,5 @@ footer {
     text-align: center;
     position: relative;
     bottom: 0;
-    size: 1rem;
+    font-size: 1rem;
 }
