@@ -59,7 +59,7 @@ nav ul li {
 }
 
 nav ul li:hover, #clear-btn:hover, #send-btn:hover {
-    border-radius: 24px;
+    border-radius: 20px;
 }
 
 nav ul li:nth-child(1){
@@ -90,7 +90,6 @@ nav ul li:nth-child(3):hover{
 .main {
     padding: 1rem;
     display: grid;
-    /*grid-template-columns: 47vw 47vw;*/
     grid-template-columns: 48vw 48vw;
     gap: 1rem;
     justify-content: center;
@@ -101,6 +100,7 @@ nav ul li:nth-child(3):hover{
     .main {
         grid-template-columns: none;
         grid-template-rows: 52vh 52vh;
+        justify-content: initial;
     }
 }
 
@@ -181,6 +181,12 @@ input {
     transition: all 0.2s;
     margin: 0 1rem 1rem 1rem;
     background-color: var(--btn-color);
+    
+}
+
+#send-btn {
+    opacity: 0;
+
 }
 
 #send-btn:hover {
