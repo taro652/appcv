@@ -1,5 +1,5 @@
 import * as pdfjsLib from 'pdfjs-dist';
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url'; 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
@@ -9,56 +9,69 @@ const clearBtn = document.getElementById('clear-btn');
 const sendBtn = document.getElementById('send-btn');
 const info = document.querySelector('.info');
 
-let selectedFile = null; //variable para manipular el archivo en memoria
+let txtParaLaIa = '';
 
 // 1. Capturar y manipular el archivo al seeleccionarlo
-input.addEventListener('change', () => {
+input.addEventListener('change', async () => {
     const file = input.files[0];
 
     if(!file) return;
 
-    // selectedFile = file; //guarda la referencia en memoria
-    sendBtn.disabled = false; //habilita los botones
-    clearBtn.disabled = false;
-    console.log(file.type);
-    
     if(file.type === "application/pdf") {
         const url = URL.createObjectURL(file);
         preview.innerHTML = `<embed src="${url}"  type="application/pdf" width="100%" height="100%"/>`;
-        
-        parsePDF(file).then(data => {
-            info.innerHTML = "Esto es lo que analizará la IA:</br></br></br>" + data;
-        });
 
-        sendBtn.style.opacity = 100;
+        info.innerHTML = "Procesando texto del PDF..."; // <--- Avisás al usuario
+
+        txtParaLaIa = await parsePDF(file);
+        
+        info.innerHTML = "PDF procesado listo para enviar."; // <--- Avisás que terminó
+        
+        sendBtn.disabled = false; //habilita los botones
+        clearBtn.disabled = false;
+        clearBtn.style.opacity = 1;
+        sendBtn.style.opacity = 1;
     } else {
         preview.innerHTML = '<span style="color: red;">Formato no soportado</span>';
     }
 
-    clearBtn.addEventListener('click',() => {
-        input.value = "";
-        preview.innerHTML = ''
-        info.innerHTML = '';
-        sendBtn.style.opacity = 0;
-        clearBtn.disabled = true;
-        sendBtn.disabled = true;
-    });
 
-    sendBtn.addEventListener("click", () => {
-        sendBtn();
-    });
 });
 
-function send() {
-    fetch("/api/review", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            cvText: info.innerHTML
-        })
-    })
+clearBtn.addEventListener('click',() => {
+    input.value = "";
+    preview.innerHTML = ''
+    info.innerHTML = '';
+    clearBtn.style.opacity = 0;
+    sendBtn.style.opacity = 0;
+    clearBtn.disabled = true;
+    sendBtn.disabled = true;
+});
+
+sendBtn.addEventListener("click", () => {
+    info.innerHTML = 'PDF enviado. Por favor, espere';
+    enviarAlBackend(txtParaLaIa);
+    sendBtn.disabled = true;
+});
+
+async function enviarAlBackend(cv) {
+    try {
+        const respuesta = await fetch('http://localhost:3000/api/datos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Le avisamos al backend que enviamos JSON
+            },
+            body: JSON.stringify({ variableTexto: cv }) // Convertimos la variable a texto JSON
+        });
+
+        const resultado = await respuesta.json();
+        // Respuesta del backend:
+        //console.log(resultado.devolucion);
+        info.innerHTML = resultado.devolucion;
+        
+    } catch (error) {
+        console.error("Error en la comunicación:", error);
+    }
 }
 
 async function parsePDF(file) {

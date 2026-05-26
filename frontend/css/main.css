@@ -181,12 +181,7 @@ input {
     transition: all 0.2s;
     margin: 0 1rem 1rem 1rem;
     background-color: var(--btn-color);
-    
-}
-
-#send-btn {
-    opacity: 0;
-
+    opacity: 0;    
 }
 
 #send-btn:hover {
