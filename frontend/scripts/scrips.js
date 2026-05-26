@@ -56,7 +56,7 @@ sendBtn.addEventListener("click", () => {
 
 async function enviarAlBackend(cv) {
     try {
-        const respuesta = await fetch('http://localhost:3000/api/datos', {
+        const respuesta = await fetch('https://appcv-g3l8.onrender.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Le avisamos al backend que enviamos JSON
