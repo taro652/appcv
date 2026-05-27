@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <scrips type="module" src="../backend/scrips.js" defer></scrips>
+    <link rel="shortcut icon" href="/appcv/assets/favicon-qTZ_FzOx.svg" type="image/x-icon">
+    <title>appcv</title>
+  <script type="module" crossorigin src="/appcv/assets/index-CeFAORfk.js"></script>
+  <link rel="stylesheet" crossorigin href="/appcv/assets/index-DGsRpahS.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>logo</li>
+            <li>Privacidad</li>
+            <li>Sobre nosotros</li>
+        </ul>
+    </nav>
+
+    <div class="main">
+        <div class="main-block left-content">
+            <h2>Cargue su curriculum</h2>
+            <div class="input">
+                    <label id="upload">
+                        <input type="file" id="file-input" accept="application/pdf, .docx"/>
+                        <div class="preview"></div>
+                    </label>
+                    <div class="action-btn">
+                        <button id="clear-btn" disabled>Clear</button>
+                        <button id="send-btn" disabled>Send</button>
+                    </div>                
+            </div>
+        </div>
+        <div class="main-block right-content">
+            <h2>Información procesada por IA</h2>
+            <div class="info">
+                Acá se mostrará lo que vas a enviar a la IA.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        copy - creator
+    </footer>
+</body>
+</html>
